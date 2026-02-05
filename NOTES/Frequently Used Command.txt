@@ -1,0 +1,5 @@
+pip freeze > requirements.txt
+git add .
+git commit -m "Your Update Details"
+git push -u origin main
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
