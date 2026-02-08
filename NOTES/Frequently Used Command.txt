@@ -2,4 +2,7 @@ pip freeze > requirements.txt
 git add .
 git commit -m "Your Update Details"
 git push -u origin main
+<<<<<<< HEAD
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+=======
+>>>>>>> ef8851a2822426825a80b4cff35491b580bda8c5
