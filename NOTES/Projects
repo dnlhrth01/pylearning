@@ -1,0 +1,49 @@
+I am a System Operations Engineer responsible for handling system breakdowns, attending urgent incidents, and participating in scheduled maintenance and meetings. I want to build a Python-based application that improves my operational workflow, incident tracking, and task management.
+
+The system should integrate with Google Calendar to automatically create reminders and trigger alarms for upcoming meetings, maintenance windows, and critical tasks.
+
+Additionally, I need a centralized platform to log and track technical incidents such as system breakdowns. Each breakdown record should include:
+
+Duration of downtime
+
+Error name / code
+
+Affected component
+
+Root cause
+
+Actions taken
+
+Resolution status (Solved / Escalated to L2 support)
+
+Date of occurrence
+
+Case Reference
+
+The application should allow me to quickly search past incidents to determine whether a similar issue has occurred before and reference the solution.
+
+I also want a module to manage warranty claims with the following details:
+
+Serial Number (S/N)
+
+Part Number
+
+Part Name
+
+Installation Date
+
+Arrival Date
+
+Case Reference
+
+Furthermore, the system must be flexible enough to support custom record types for new operational scenarios. For example, creating an "Oil Leak Record" that captures:
+
+Robot Number
+
+Wheel Position
+
+Date of Occurrence
+
+The application should be scalable so I can add new record categories without redesigning the entire system.
+
+Please recommend a Python project architecture, technology stack, database design, and key features that would make this application reliable, scalable, and suitable for real-world operational use.
