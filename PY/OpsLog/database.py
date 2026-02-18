@@ -45,3 +45,32 @@ def create_tables():
             requested_by TEXT
         )
         """)
+
+
+# ---------- SAFETY CHECKS ----------
+
+def user_exists(username):
+    with connect() as conn:
+        cur = conn.execute(
+            "SELECT 1 FROM users WHERE username=?",
+            (username,)
+        )
+        return cur.fetchone() is not None
+
+
+def incident_exists(incident_id):
+    with connect() as conn:
+        cur = conn.execute(
+            "SELECT 1 FROM incidents WHERE id=?",
+            (incident_id,)
+        )
+        return cur.fetchone() is not None
+
+
+def delete_request_exists(incident_id):
+    with connect() as conn:
+        cur = conn.execute(
+            "SELECT 1 FROM delete_requests WHERE incident_id=?",
+            (incident_id,)
+        )
+        return cur.fetchone() is not None

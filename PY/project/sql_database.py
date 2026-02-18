@@ -1,12 +1,13 @@
 import sqlite3
 from datetime import datetime
 
+
 class DatabaseManager:
     def __init__(self, db_name="database.db"):
         self.db_name = db_name
-        self.create_tables()
+        self.initialize_database()
 
-    def create_tables(self):
+    def initialize_database(self):
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
 
@@ -30,6 +31,7 @@ class DatabaseManager:
             )
             """)
 
+    # USER CRUD
     def create_user(self, name, email, age):
         try:
             with sqlite3.connect(self.db_name) as conn:
@@ -48,6 +50,13 @@ class DatabaseManager:
             cursor.execute("SELECT * FROM users")
             return cursor.fetchall()
 
+    def delete_user(self, user_id):
+        with sqlite3.connect(self.db_name) as conn:
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM users WHERE id=?", (user_id,))
+            return cursor.rowcount > 0
+
+    # POSTS
     def create_post(self, user_id, title, content):
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
@@ -62,12 +71,6 @@ class DatabaseManager:
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM posts ORDER BY created_at DESC")
             return cursor.fetchall()
-
-    def delete_user(self, user_id):
-        with sqlite3.connect(self.db_name) as conn:
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM users WHERE id=?", (user_id,))
-            return cursor.rowcount > 0
 
     def delete_post(self, post_id):
         with sqlite3.connect(self.db_name) as conn:

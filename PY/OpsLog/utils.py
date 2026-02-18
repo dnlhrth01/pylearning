@@ -3,18 +3,25 @@ import re
 from datetime import datetime
 
 
+TIME_FORMAT = "%d/%m/%Y %I:%M %p"
+
+
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
 
 def validate_password(password):
+
     if len(password) < 8:
-        return False
+        return False, "Minimum 8 characters."
+
     if not re.search(r"[A-Z]", password):
-        return False
+        return False, "Must contain uppercase."
+
     if not re.search(r"[0-9]", password):
-        return False
-    return True
+        return False, "Must contain a number."
+
+    return True, ""
 
 
 def now():
@@ -23,7 +30,7 @@ def now():
 
 def format_datetime(date_obj, time_obj):
     dt = datetime.combine(date_obj, time_obj)
-    return dt.strftime("%d/%m/%Y %I:%M %p"), dt
+    return dt.strftime(TIME_FORMAT), dt
 
 
 def calculate_minutes(start, end):
