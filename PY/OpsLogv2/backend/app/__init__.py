@@ -1,0 +1,2 @@
+"""OpsLog FastAPI backend package."""
+
